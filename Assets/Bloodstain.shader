@@ -48,9 +48,6 @@ Shader "Particles/Bloodstain"
         // Zero centered UV
         float2 uv = texcoord.xy - 0.5;
 
-        // Radius parameter
-        float r = radius / 4;
-
         // Noise 1 - Radial curve
         float freq = lerp(1.2, 2.7, Random(seed * 48923.23));
         float n1 = snoise(atan2(uv.x, uv.y) * freq + seed * 764.2174);
@@ -60,10 +57,10 @@ Shader "Particles/Bloodstain"
         n1p = n1p * n1p * n1p;
 
         // Noise 2 - Small dot
-        float n2 = snoise(uv * 2 / r + seed * 1481.28943);
+        float n2 = snoise(uv * 8 / radius + seed * 1481.28943);
 
-        // Potential = radius + noise * radius ^ 2;
-        float p = r * (1 + r * (n1p * 14 + n2 * 1.2));
+        // Potential = radius + noise * radius ^ 3;
+        float p = radius * (0.23 + radius * radius * (n1p * 0.9 + n2 * 0.07));
 
         // Antialiased thresholding
         float l = length(uv);
