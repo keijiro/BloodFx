@@ -1,4 +1,5 @@
-# BloodFx
+BloodFx
+=======
 
 An experimental implementation of procedural blood stain (splash) effect shader.
 
@@ -8,3 +9,8 @@ It's implemented as a particle shader.
 To use in a particle syste, custom vertex streams should be set as follows.
 
 ![inspector](https://i.imgur.com/nfFohGF.png)
+
+License
+-------
+
+[CC0](https://creativecommons.org/publicdomain/zero/1.0/)
